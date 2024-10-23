@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BitRent")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+925860b95d970a60a1230fab69690f115f6e1bc7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c92d226b934bad250dffffd667e4ff006c157d87")]
 [assembly: System.Reflection.AssemblyProductAttribute("BitRent")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BitRent")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
