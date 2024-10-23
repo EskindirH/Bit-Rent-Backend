@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "KXC5caneUQXtQS/b5Kl2CJqS96BVIuSxxFtl8cphMfw=",
+  "Source": "BitRent",
+  "BasePath": "_content/BitRent",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "BitRent\\wwwroot",
+      "Source": "BitRent",
+      "ContentRoot": "C:\\Users\\Eskindir H\\source\\repos\\XokaBackend\\wwwroot\\",
+      "BasePath": "_content/BitRent",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
