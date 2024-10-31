@@ -12,10 +12,10 @@ namespace BitRent.Controllers
     public class PropertyController(IProperty property, IWebHostEnvironment webHostEnvironment) : ControllerBase
     {
 
-        private string ProcessUploadedFile(CreatePropertyViewModel model)
+        private string ProcessUploadedFile(AddPropertyViewModel model)
         {
             string UniqueFileName;
-            string UploadsFolder = Path.Combine(webHostEnvironment.ContentRootPath, "images");
+            string UploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
             //await _blobStorageService model.Photo.OpenReadStream()
             UniqueFileName = Guid.NewGuid().ToString() + "_" +
                              Path.GetFileName(model.Photo.FileName);
@@ -30,11 +30,27 @@ namespace BitRent.Controllers
         [HttpGet("list")]
         public async Task<IActionResult> List()
         {
-            return Ok(await property.GetAllAsync());
+            List<AddPropertyViewModel> model = new List<AddPropertyViewModel>();
+            foreach (var prop in await property.GetAllAsync())
+            { 
+                var prs = new AddPropertyViewModel
+                {
+                    Id = prop.Id,
+                    Price = prop.Price,
+                    Description = prop.Description,
+                    IsAvailable = prop.IsAvailable,
+                    OwnerId = prop.OwnerId,
+                    CustomerId = prop.CustomerId,
+                    PhotoFile = await property.FetchPhotoData(prop.FilePath)
+
+                };
+                model.Add(prs);
+            }
+            return Ok(model.ToArray());
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> Create(CreatePropertyViewModel model)
+        public async Task<IActionResult> Create([FromForm]AddPropertyViewModel model)
         {
             try
             {
@@ -107,7 +123,7 @@ namespace BitRent.Controllers
             {
                 var result = await property.GetAsync(id);
 
-                if (result == null)
+                if (result != null)
                 {
                     await property.DeleteAsync(id);
                     return Ok();

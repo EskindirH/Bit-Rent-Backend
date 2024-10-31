@@ -1,10 +1,11 @@
 ﻿using BitRent.Data;
 using BitRent.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 namespace BitRent.Repository
 {
-    public class PropertyRepository(AppDbContext dbContext) : IProperty
+    public class PropertyRepository(AppDbContext dbContext, IWebHostEnvironment webHostEnvironment) : IProperty
     {
         public async Task<Property> CreateAsync(Property property)
         {
@@ -19,8 +20,16 @@ namespace BitRent.Repository
             if (result != null)
             {
                 dbContext.Remove(result);
-                await dbContext.SaveChangesAsync(true);
+                await dbContext.SaveChangesAsync();
             }
+        }
+
+        public async Task<byte[]> FetchPhotoData(string filePath)
+        {
+            string UploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+            var UniqueFileName = Path.Combine(UploadsFolder, filePath);
+            
+            return await File.ReadAllBytesAsync(UniqueFileName);
         }
 
         public async Task<IEnumerable<Property>> GetAllAsync()

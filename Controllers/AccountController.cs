@@ -163,7 +163,7 @@ namespace BitRent.Controllers
                         FirstName = model.Firstname,
                         LastName = model.Lastname,
                         Email = model.Email,
-                        PhoneNumber = model.PhoneNumber,
+                        PhoneNumber = model.PhoneNumber, 
                         AccountNumber = model.AccountNumber!,
                         PasswordHash = PasswordHash,
                         PasswordSalt = PasswordSalt

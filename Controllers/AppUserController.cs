@@ -26,7 +26,7 @@ namespace BitRent.Controllers
             try
             {
                 var user = new AppUser()
-                {
+                {     
                     FirstName = model.Firstname,
                     LastName = model.Lastname,
                     Email = model.Email,

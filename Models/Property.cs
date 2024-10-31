@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BitRent.Models
-{
+{ 
     public class Property
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

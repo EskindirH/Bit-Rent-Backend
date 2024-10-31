@@ -9,5 +9,6 @@ namespace BitRent.Repository
         Task DeleteAsync(string id);
         Task<Property> GetAsync(string id);
         Task<IEnumerable<Property>> GetAllAsync();
+        Task<byte[]> FetchPhotoData(string filePath);
     }
 }
